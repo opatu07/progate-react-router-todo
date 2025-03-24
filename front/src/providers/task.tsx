@@ -1,7 +1,32 @@
+import {
+    createContext,
+    useState,
+    ReactNode,
+    Dispatch,
+    SetStateAction,
+} from "react";
 import {Task} from "@/types";
-import {Dispatch, SetStateAction,} from "react";
 
 type TaskContextType = {
     tasks: Task[];
     setTasks: Dispatch<SetStateAction<Task[]>>;
 };
+
+export const TaskContext = createContext<TaskContextType>({
+    tasks: [],
+    setTasks: (): void => {
+
+    },
+});
+
+export const TaskProvider = ({children}: {children: ReactNode}) => {
+    const [tasks, setTasks] = useState<Task[]>([]);
+
+    return (
+      <TaskContext.Provider value={{tasks, setTasks}}>
+          {children}
+      </TaskContext.Provider>
+    );
+};
+
+
