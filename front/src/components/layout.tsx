@@ -11,6 +11,15 @@ export function Layout() {
       <div>
         <Outlet />
       </div>
+      <div data-test="input-title">
+
+      </div>
+      <div data-test="task-title">
+
+      </div>
+      <div data-test="task-item">
+        
+      </div>
     </div>
   );
 }
